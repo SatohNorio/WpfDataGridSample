@@ -25,12 +25,12 @@ namespace WpfDataGridSample
         private void Initialize()
         {
             var orders = new ObservableCollection<CorrOrder>();
-            orders.Add(new CorrOrder(1, "あああああいいいいいううううう", 3000));
-            orders.Add(new CorrOrder(1, "かかかかかきききききくくくくく", 2520));
-            orders.Add(new CorrOrder(1, "さささささしししししすすすすす", 1234));
-            orders.Add(new CorrOrder(4, "たたたたたたちちちちちつつつつつ", 98765));
-            orders.Add(new CorrOrder(4, "なななななにににににぬぬぬぬぬ", 567));
-            orders.Add(new CorrOrder(4, "はははははひひひひひふふふふふ", 12));
+            orders.Add(new CorrOrder(1, ItemType.Fruits, "りんご", "あああああいいいいいううううう", 3000));
+            orders.Add(new CorrOrder(1, ItemType.Fruits, "もも", "かかかかかきききききくくくくく", 2520));
+            orders.Add(new CorrOrder(1, ItemType.Vegetables, "トマト", "さささささしししししすすすすす", 1234));
+            orders.Add(new CorrOrder(4, ItemType.Vegetables, "いちご", "たたたたたたちちちちちつつつつつ", 98765));
+            orders.Add(new CorrOrder(4, ItemType.Vegetables, "ピーマン", "なななななにににににぬぬぬぬぬ", 567));
+            orders.Add(new CorrOrder(4, ItemType.Fruits, "なし", "はははははひひひひひふふふふふ", 12));
 
             var view = (CollectionView)CollectionViewSource.GetDefaultView(orders);
             PropertyGroupDescription gd = new PropertyGroupDescription("ID");
@@ -119,15 +119,26 @@ namespace WpfDataGridSample
     {
         public int ID { get; set; }
 
+        public ItemType Type { get; set; }
+
         public string ItemName { get; set; }
+
+        public string Comment { get; set; }
 
         public int Qty { get; set; }
 
-        public CorrOrder(int id, string name, int qty)
+        public CorrOrder(int id, ItemType type, string name, string comment, int qty)
         {
             this.ID = id;
             this.ItemName = name;
+            this.Comment = comment;
             this.Qty = qty;
         }
+    }
+
+    enum ItemType
+    {
+        Fruits,
+        Vegetables
     }
 }
