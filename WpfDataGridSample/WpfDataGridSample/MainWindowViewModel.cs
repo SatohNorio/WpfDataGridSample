@@ -36,6 +36,7 @@ namespace WpfDataGridSample
             PropertyGroupDescription gd = new PropertyGroupDescription("ID");
             view.GroupDescriptions.Add(gd);
             this.GridDataCollectionView = view;
+
         }
 
         /// <summary>
@@ -127,18 +128,28 @@ namespace WpfDataGridSample
 
         public int Qty { get; set; }
 
+        public bool Checked { get; set; }
+
         public CorrOrder(int id, ItemType type, string name, string comment, int qty)
         {
             this.ID = id;
             this.ItemName = name;
             this.Comment = comment;
             this.Qty = qty;
+            this.Checked = false;
         }
     }
 
-    enum ItemType
+    public enum ItemType
     {
         Fruits,
         Vegetables
+    }
+
+    public class ComboboxItem
+    {
+        public string Label { get; set; }
+
+        public ItemType Value { get; set; }
     }
 }
