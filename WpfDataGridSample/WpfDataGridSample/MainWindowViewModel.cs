@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 
 namespace WpfDataGridSample
 {
-    class MainWindowViewModel : INotifyPropertyChanged, IDisposable
+    public class MainWindowViewModel : INotifyPropertyChanged, IDisposable
     {
         /// <summary>
         /// コンストラクタ
@@ -56,6 +56,7 @@ namespace WpfDataGridSample
             private set
             {
                 this._view = value;
+                RaisePropertyChanged("GridDataCollectionView");
             }
         }
 
@@ -116,7 +117,7 @@ namespace WpfDataGridSample
 
     }
 
-    class CorrOrder
+    public class CorrOrder
     {
         public int ID { get; set; }
 
